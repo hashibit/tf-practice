@@ -1,9 +1,9 @@
 
 
-resource_prefix = "is-jiecc"
+resource_prefix = "is-chenjie"
 
-aws_access_key = "AKIA5256TLYDAFUUXI4V"
-aws_secret_key = "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"
+aws_access_key = "ak-xxxxxx"
+aws_secret_key = "sk-yyyyyy"
 aws_region     = "us-east-1"
 
 vpc_cidr = "10.4.0.0/16"

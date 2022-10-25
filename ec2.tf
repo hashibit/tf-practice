@@ -9,7 +9,7 @@ resource "aws_instance" "public" {
 
   key_name             = "is-chenjie"
   subnet_id            = aws_subnet.public.id
-  user_data            = file("user-data.sh")
+  # user_data            = file("user-data.sh")
   iam_instance_profile = "dev-interview-iam-node"
 
   vpc_security_group_ids = [aws_security_group.public.id]
