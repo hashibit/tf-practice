@@ -1,0 +1,526 @@
+➜  infstones
+➜  infstones terraform destroy
+aws_eip.public_ip_for_nat: Refreshing state... [id=eipalloc-0e008bdcbcf0d3eec]
+aws_vpc.chenjie: Refreshing state... [id=vpc-0fdb8f3a6c4669814]
+aws_internet_gateway.public: Refreshing state... [id=igw-09db7c00c6d444547]
+aws_subnet.public: Refreshing state... [id=subnet-01103e35ccdcf2d41]
+aws_subnet.private: Refreshing state... [id=subnet-0d5a48019ef55666b]
+aws_security_group.public: Refreshing state... [id=sg-0e84444a03a2bd0d9]
+aws_security_group.private: Refreshing state... [id=sg-023b8f76732949447]
+aws_route_table.public: Refreshing state... [id=rtb-064d3e2e35a9db014]
+aws_nat_gateway.public: Refreshing state... [id=nat-0735e0f6b45002e82]
+aws_instance.private: Refreshing state... [id=i-037a47a9b0fd5d2a9]
+aws_instance.public: Refreshing state... [id=i-074b83a4e940c37e1]
+aws_route_table.private: Refreshing state... [id=rtb-0f734461763263253]
+aws_route_table_association.public: Refreshing state... [id=rtbassoc-01cfa22762009ad5f]
+aws_route_table_association.private: Refreshing state... [id=rtbassoc-09120c7121918524e]
+aws_eip.ec2: Refreshing state... [id=eipalloc-0212d06caa05c8471]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_eip.ec2 will be destroyed
+  - resource "aws_eip" "ec2" {
+      - allocation_id        = "eipalloc-0212d06caa05c8471" -> null
+      - association_id       = "eipassoc-044002ff4e648e305" -> null
+      - domain               = "vpc" -> null
+      - id                   = "eipalloc-0212d06caa05c8471" -> null
+      - instance             = "i-074b83a4e940c37e1" -> null
+      - network_border_group = "us-east-1" -> null
+      - network_interface    = "eni-01ffb6e2a0abcda80" -> null
+      - private_dns          = "ip-10-4-0-137.ec2.internal" -> null
+      - private_ip           = "10.4.0.137" -> null
+      - public_dns           = "ec2-52-200-121-103.compute-1.amazonaws.com" -> null
+      - public_ip            = "52.200.121.103" -> null
+      - public_ipv4_pool     = "amazon" -> null
+      - tags                 = {} -> null
+      - tags_all             = {} -> null
+      - vpc                  = true -> null
+    }
+
+  # aws_eip.public_ip_for_nat will be destroyed
+  - resource "aws_eip" "public_ip_for_nat" {
+      - allocation_id        = "eipalloc-0e008bdcbcf0d3eec" -> null
+      - association_id       = "eipassoc-095c6c993d6798ff0" -> null
+      - domain               = "vpc" -> null
+      - id                   = "eipalloc-0e008bdcbcf0d3eec" -> null
+      - network_border_group = "us-east-1" -> null
+      - network_interface    = "eni-01d26ed23a6407f79" -> null
+      - private_dns          = "ip-10-4-0-52.ec2.internal" -> null
+      - private_ip           = "10.4.0.52" -> null
+      - public_dns           = "ec2-44-208-182-216.compute-1.amazonaws.com" -> null
+      - public_ip            = "44.208.182.216" -> null
+      - public_ipv4_pool     = "amazon" -> null
+      - tags                 = {
+          - "Name" = "is-jiechen-eip-01"
+        } -> null
+      - tags_all             = {
+          - "Name" = "is-jiechen-eip-01"
+        } -> null
+      - vpc                  = true -> null
+
+      - timeouts {}
+    }
+
+  # aws_instance.private will be destroyed
+  - resource "aws_instance" "private" {
+      - ami                                  = "ami-06640050dc3f556bb" -> null
+      - arn                                  = "arn:aws:ec2:us-east-1:951198113286:instance/i-037a47a9b0fd5d2a9" -> null
+      - associate_public_ip_address          = false -> null
+      - availability_zone                    = "us-east-1c" -> null
+      - cpu_core_count                       = 1 -> null
+      - cpu_threads_per_core                 = 1 -> null
+      - disable_api_stop                     = false -> null
+      - disable_api_termination              = false -> null
+      - ebs_optimized                        = false -> null
+      - get_password_data                    = false -> null
+      - hibernation                          = false -> null
+      - iam_instance_profile                 = "dev-interview-iam-node" -> null
+      - id                                   = "i-037a47a9b0fd5d2a9" -> null
+      - instance_initiated_shutdown_behavior = "stop" -> null
+      - instance_state                       = "running" -> null
+      - instance_type                        = "t2.micro" -> null
+      - ipv6_address_count                   = 0 -> null
+      - ipv6_addresses                       = [] -> null
+      - key_name                             = "is-chenjie" -> null
+      - monitoring                           = false -> null
+      - primary_network_interface_id         = "eni-00565771253d093b2" -> null
+      - private_dns                          = "ip-10-4-1-26.ec2.internal" -> null
+      - private_ip                           = "10.4.1.26" -> null
+      - secondary_private_ips                = [] -> null
+      - security_groups                      = [] -> null
+      - source_dest_check                    = true -> null
+      - subnet_id                            = "subnet-0d5a48019ef55666b" -> null
+      - tags                                 = {
+          - "Name" = "is-jiechen-ec2-pvt-02"
+        } -> null
+      - tags_all                             = {
+          - "Name" = "is-jiechen-ec2-pvt-02"
+        } -> null
+      - tenancy                              = "default" -> null
+      - user_data                            = "265adb68c6e9d18ce74a48a5bd79eb2cf7ae4e11" -> null
+      - user_data_replace_on_change          = false -> null
+      - vpc_security_group_ids               = [
+          - "sg-023b8f76732949447",
+        ] -> null
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      - credit_specification {
+          - cpu_credits = "standard" -> null
+        }
+
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_put_response_hop_limit = 1 -> null
+          - http_tokens                 = "optional" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/sda1" -> null
+          - encrypted             = false -> null
+          - iops                  = 100 -> null
+          - tags                  = {} -> null
+          - throughput            = 0 -> null
+          - volume_id             = "vol-09d1916a340577902" -> null
+          - volume_size           = 10 -> null
+          - volume_type           = "gp2" -> null
+        }
+    }
+
+  # aws_instance.public will be destroyed
+  - resource "aws_instance" "public" {
+      - ami                                  = "ami-06640050dc3f556bb" -> null
+      - arn                                  = "arn:aws:ec2:us-east-1:951198113286:instance/i-074b83a4e940c37e1" -> null
+      - associate_public_ip_address          = true -> null
+      - availability_zone                    = "us-east-1e" -> null
+      - cpu_core_count                       = 1 -> null
+      - cpu_threads_per_core                 = 1 -> null
+      - disable_api_stop                     = false -> null
+      - disable_api_termination              = false -> null
+      - ebs_optimized                        = false -> null
+      - get_password_data                    = false -> null
+      - hibernation                          = false -> null
+      - iam_instance_profile                 = "dev-interview-iam-node" -> null
+      - id                                   = "i-074b83a4e940c37e1" -> null
+      - instance_initiated_shutdown_behavior = "stop" -> null
+      - instance_state                       = "running" -> null
+      - instance_type                        = "t2.micro" -> null
+      - ipv6_address_count                   = 0 -> null
+      - ipv6_addresses                       = [] -> null
+      - key_name                             = "is-chenjie" -> null
+      - monitoring                           = false -> null
+      - primary_network_interface_id         = "eni-01ffb6e2a0abcda80" -> null
+      - private_dns                          = "ip-10-4-0-137.ec2.internal" -> null
+      - private_ip                           = "10.4.0.137" -> null
+      - public_ip                            = "52.200.121.103" -> null
+      - secondary_private_ips                = [] -> null
+      - security_groups                      = [] -> null
+      - source_dest_check                    = true -> null
+      - subnet_id                            = "subnet-01103e35ccdcf2d41" -> null
+      - tags                                 = {
+          - "Name" = "is-jiechen-ec2-pub-02"
+        } -> null
+      - tags_all                             = {
+          - "Name" = "is-jiechen-ec2-pub-02"
+        } -> null
+      - tenancy                              = "default" -> null
+      - user_data                            = "265adb68c6e9d18ce74a48a5bd79eb2cf7ae4e11" -> null
+      - user_data_replace_on_change          = false -> null
+      - vpc_security_group_ids               = [
+          - "sg-0e84444a03a2bd0d9",
+        ] -> null
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      - credit_specification {
+          - cpu_credits = "standard" -> null
+        }
+
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_put_response_hop_limit = 1 -> null
+          - http_tokens                 = "optional" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/sda1" -> null
+          - encrypted             = false -> null
+          - iops                  = 100 -> null
+          - tags                  = {} -> null
+          - throughput            = 0 -> null
+          - volume_id             = "vol-07846a2817c0b5b3c" -> null
+          - volume_size           = 10 -> null
+          - volume_type           = "gp2" -> null
+        }
+    }
+
+  # aws_internet_gateway.public will be destroyed
+  - resource "aws_internet_gateway" "public" {
+      - arn      = "arn:aws:ec2:us-east-1:951198113286:internet-gateway/igw-09db7c00c6d444547" -> null
+      - id       = "igw-09db7c00c6d444547" -> null
+      - owner_id = "951198113286" -> null
+      - tags     = {
+          - "Name" = "is-jiechen-igw-01"
+        } -> null
+      - tags_all = {
+          - "Name" = "is-jiechen-igw-01"
+        } -> null
+      - vpc_id   = "vpc-0fdb8f3a6c4669814" -> null
+    }
+
+  # aws_nat_gateway.public will be destroyed
+  - resource "aws_nat_gateway" "public" {
+      - allocation_id        = "eipalloc-0e008bdcbcf0d3eec" -> null
+      - connectivity_type    = "public" -> null
+      - id                   = "nat-0735e0f6b45002e82" -> null
+      - network_interface_id = "eni-01d26ed23a6407f79" -> null
+      - private_ip           = "10.4.0.52" -> null
+      - public_ip            = "44.208.182.216" -> null
+      - subnet_id            = "subnet-01103e35ccdcf2d41" -> null
+      - tags                 = {
+          - "Name" = "is-jiechen-nat-02"
+        } -> null
+      - tags_all             = {
+          - "Name" = "is-jiechen-nat-02"
+        } -> null
+    }
+
+  # aws_route_table.private will be destroyed
+  - resource "aws_route_table" "private" {
+      - arn              = "arn:aws:ec2:us-east-1:951198113286:route-table/rtb-0f734461763263253" -> null
+      - id               = "rtb-0f734461763263253" -> null
+      - owner_id         = "951198113286" -> null
+      - propagating_vgws = [] -> null
+      - route            = [
+          - {
+              - carrier_gateway_id         = ""
+              - cidr_block                 = "0.0.0.0/0"
+              - core_network_arn           = ""
+              - destination_prefix_list_id = ""
+              - egress_only_gateway_id     = ""
+              - gateway_id                 = ""
+              - instance_id                = ""
+              - ipv6_cidr_block            = ""
+              - local_gateway_id           = ""
+              - nat_gateway_id             = "nat-0735e0f6b45002e82"
+              - network_interface_id       = ""
+              - transit_gateway_id         = ""
+              - vpc_endpoint_id            = ""
+              - vpc_peering_connection_id  = ""
+            },
+        ] -> null
+      - tags             = {
+          - "Name" = "is-jiechen-rt-pvt-02"
+        } -> null
+      - tags_all         = {
+          - "Name" = "is-jiechen-rt-pvt-02"
+        } -> null
+      - vpc_id           = "vpc-0fdb8f3a6c4669814" -> null
+    }
+
+  # aws_route_table.public will be destroyed
+  - resource "aws_route_table" "public" {
+      - arn              = "arn:aws:ec2:us-east-1:951198113286:route-table/rtb-064d3e2e35a9db014" -> null
+      - id               = "rtb-064d3e2e35a9db014" -> null
+      - owner_id         = "951198113286" -> null
+      - propagating_vgws = [] -> null
+      - route            = [
+          - {
+              - carrier_gateway_id         = ""
+              - cidr_block                 = "0.0.0.0/0"
+              - core_network_arn           = ""
+              - destination_prefix_list_id = ""
+              - egress_only_gateway_id     = ""
+              - gateway_id                 = "igw-09db7c00c6d444547"
+              - instance_id                = ""
+              - ipv6_cidr_block            = ""
+              - local_gateway_id           = ""
+              - nat_gateway_id             = ""
+              - network_interface_id       = ""
+              - transit_gateway_id         = ""
+              - vpc_endpoint_id            = ""
+              - vpc_peering_connection_id  = ""
+            },
+        ] -> null
+      - tags             = {
+          - "Name" = "is-jiechen-rt-pub-02"
+        } -> null
+      - tags_all         = {
+          - "Name" = "is-jiechen-rt-pub-02"
+        } -> null
+      - vpc_id           = "vpc-0fdb8f3a6c4669814" -> null
+    }
+
+  # aws_route_table_association.private will be destroyed
+  - resource "aws_route_table_association" "private" {
+      - id             = "rtbassoc-09120c7121918524e" -> null
+      - route_table_id = "rtb-0f734461763263253" -> null
+      - subnet_id      = "subnet-0d5a48019ef55666b" -> null
+    }
+
+  # aws_route_table_association.public will be destroyed
+  - resource "aws_route_table_association" "public" {
+      - id             = "rtbassoc-01cfa22762009ad5f" -> null
+      - route_table_id = "rtb-064d3e2e35a9db014" -> null
+      - subnet_id      = "subnet-01103e35ccdcf2d41" -> null
+    }
+
+  # aws_security_group.private will be destroyed
+  - resource "aws_security_group" "private" {
+      - arn                    = "arn:aws:ec2:us-east-1:951198113286:security-group/sg-023b8f76732949447" -> null
+      - description            = "Managed by Terraform" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = ""
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-023b8f76732949447" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "10.4.0.0/24",
+                ]
+              - description      = ""
+              - from_port        = 22
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 22
+            },
+        ] -> null
+      - name                   = "terraform-20221025065432956200000001" -> null
+      - name_prefix            = "terraform-" -> null
+      - owner_id               = "951198113286" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Name" = "is-jiechen-sg-pub-02"
+        } -> null
+      - tags_all               = {
+          - "Name" = "is-jiechen-sg-pub-02"
+        } -> null
+      - vpc_id                 = "vpc-0fdb8f3a6c4669814" -> null
+    }
+
+  # aws_security_group.public will be destroyed
+  - resource "aws_security_group" "public" {
+      - arn                    = "arn:aws:ec2:us-east-1:951198113286:security-group/sg-0e84444a03a2bd0d9" -> null
+      - description            = "Managed by Terraform" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = ""
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-0e84444a03a2bd0d9" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = ""
+              - from_port        = 22
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 22
+            },
+        ] -> null
+      - name                   = "terraform-20221025065643572100000001" -> null
+      - name_prefix            = "terraform-" -> null
+      - owner_id               = "951198113286" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Name" = "is-jiechen-sg-pub-02"
+        } -> null
+      - tags_all               = {
+          - "Name" = "is-jiechen-sg-pub-02"
+        } -> null
+      - vpc_id                 = "vpc-0fdb8f3a6c4669814" -> null
+    }
+
+  # aws_subnet.private will be destroyed
+  - resource "aws_subnet" "private" {
+      - arn                                            = "arn:aws:ec2:us-east-1:951198113286:subnet/subnet-0d5a48019ef55666b" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1c" -> null
+      - availability_zone_id                           = "use1-az1" -> null
+      - cidr_block                                     = "10.4.1.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-0d5a48019ef55666b" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "951198113286" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name" = "is-jiechen-sn-pvt-02"
+        } -> null
+      - tags_all                                       = {
+          - "Name" = "is-jiechen-sn-pvt-02"
+        } -> null
+      - vpc_id                                         = "vpc-0fdb8f3a6c4669814" -> null
+    }
+
+  # aws_subnet.public will be destroyed
+  - resource "aws_subnet" "public" {
+      - arn                                            = "arn:aws:ec2:us-east-1:951198113286:subnet/subnet-01103e35ccdcf2d41" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1e" -> null
+      - availability_zone_id                           = "use1-az3" -> null
+      - cidr_block                                     = "10.4.0.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-01103e35ccdcf2d41" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "951198113286" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name" = "is-jiechen-sn-pub-02"
+        } -> null
+      - tags_all                                       = {
+          - "Name" = "is-jiechen-sn-pub-02"
+        } -> null
+      - vpc_id                                         = "vpc-0fdb8f3a6c4669814" -> null
+    }
+
+  # aws_vpc.chenjie will be destroyed
+  - resource "aws_vpc" "chenjie" {
+      - arn                                  = "arn:aws:ec2:us-east-1:951198113286:vpc/vpc-0fdb8f3a6c4669814" -> null
+      - assign_generated_ipv6_cidr_block     = false -> null
+      - cidr_block                           = "10.4.0.0/16" -> null
+      - default_network_acl_id               = "acl-011ed197461cbd4eb" -> null
+      - default_route_table_id               = "rtb-0a97df94185ff1842" -> null
+      - default_security_group_id            = "sg-01be9d28e772df917" -> null
+      - dhcp_options_id                      = "dopt-096c1dd7e1ab46f5c" -> null
+      - enable_classiclink                   = false -> null
+      - enable_classiclink_dns_support       = false -> null
+      - enable_dns_hostnames                 = false -> null
+      - enable_dns_support                   = true -> null
+      - enable_network_address_usage_metrics = false -> null
+      - id                                   = "vpc-0fdb8f3a6c4669814" -> null
+      - instance_tenancy                     = "default" -> null
+      - ipv6_netmask_length                  = 0 -> null
+      - main_route_table_id                  = "rtb-0a97df94185ff1842" -> null
+      - owner_id                             = "951198113286" -> null
+      - tags                                 = {
+          - "Name" = "is-jiechen-VPC-02"
+        } -> null
+      - tags_all                             = {
+          - "Name" = "is-jiechen-VPC-02"
+        } -> null
+    }
+
+Plan: 0 to add, 0 to change, 15 to destroy.
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
